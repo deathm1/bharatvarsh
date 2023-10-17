@@ -1,28 +1,25 @@
 import { useEffect, useState } from "react";
-import AppBar from "./Components/AppBar";
+import AppBar from "./Components/AppBar/AppBar";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Container, CssBaseline } from "@mui/material";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+
+import Home from "./Pages/Home/Home";
+import StickyFooter from "./Components/StickyFooter/StickyFooter";
 
 function MasterInterface() {
   const [siteInfo, setSiteInfo] = useState({
-    siteName: "भारतवर्ष",
+    siteName: "Bharat Archive",
     tabs: [
       {
         tabName: "Tab 1",
         tabEndpoint: "/tab1",
       },
-      {
-        tabName: "Tab 2",
-        tabEndpoint: "/tab2",
-      },
-      {
-        tabName: "Tab 3",
-        tabEndpoint: "/tab3",
-      },
     ],
+    footerText: "Some footer text",
     changeThemeTooltip: "Toggle Theme",
     menuToolTip: "Open Menu",
-    logoTooltip: "भारतवर्ष",
+    logoTooltip: "Bharat Archive",
   });
 
   const [siteTheme, setSiteTheme] = useState(false);
@@ -55,6 +52,25 @@ function MasterInterface() {
           siteInfo={siteInfo}
           currentTheme={siteTheme}
           setSiteTheme={setSiteTheme}
+        />
+        <BrowserRouter>
+          <Routes>
+            <Route
+              exact
+              path="/"
+              element={
+                <Home
+                  siteInfo={siteInfo}
+                  currentTheme={siteTheme}
+                  setSiteTheme={setSiteTheme}
+                />
+              }
+            />
+          </Routes>
+        </BrowserRouter>
+        <StickyFooter
+          siteName={siteInfo.siteName}
+          footerText={siteInfo.footerText}
         />
       </Container>
     </ThemeProvider>

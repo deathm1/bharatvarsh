@@ -8,7 +8,7 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-import ThemeController from "../Controllers/ThemeController/ThemeController";
+import ThemeController from "../../Controllers/ThemeController/ThemeController";
 import { Tooltip } from "@mui/material";
 
 function ResponsiveAppBar(props) {
@@ -30,7 +30,7 @@ function ResponsiveAppBar(props) {
   if (createAppBar !== false) {
     return (
       <AppBar position="static" elevation={0} color="inherit">
-        <Toolbar>
+        <Toolbar disableGutters>
           <Tooltip title={props.siteInfo.logoTooltip}>
             <Typography
               variant="h6"
@@ -38,10 +38,9 @@ function ResponsiveAppBar(props) {
               component="a"
               href="/"
               sx={{
-                mr: 2,
-                ml: 2,
                 display: { xs: "none", md: "flex" },
                 fontWeight: 700,
+                mr: 2,
                 color: "inherit",
                 textDecoration: "none",
               }}
@@ -82,9 +81,9 @@ function ResponsiveAppBar(props) {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {props.siteInfo.tabs.map((page) => (
+              {props.siteInfo.tabs.map((page, index) => (
                 <MenuItem
-                  key={page.tabEndpoint}
+                  key={index}
                   onClick={handleCloseNavMenu}
                   href={page.tabEndpoint}
                 >
@@ -114,8 +113,8 @@ function ResponsiveAppBar(props) {
             </Typography>
           </Tooltip>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {props.siteInfo.tabs.map((page) => (
-              <Tooltip title={page.tabEndpoint} key={page.tabEndpoint}>
+            {props.siteInfo.tabs.map((page, index) => (
+              <Tooltip title={page.tabEndpoint} key={index}>
                 <Button
                   href={page.tabEndpoint}
                   key={page.tabEndpoint}
