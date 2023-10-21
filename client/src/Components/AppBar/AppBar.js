@@ -31,7 +31,7 @@ function ResponsiveAppBar(props) {
     return (
       <AppBar position="static" elevation={0} color="inherit">
         <Toolbar disableGutters>
-          <Tooltip title={props.siteInfo.logoTooltip}>
+          <Tooltip title={props.siteInfo.logoTooltip} placement="left">
             <Typography
               variant="h6"
               noWrap
@@ -50,7 +50,7 @@ function ResponsiveAppBar(props) {
           </Tooltip>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <Tooltip title={props.siteInfo.menuToolTip}>
+            <Tooltip title={props.siteInfo.menuToolTip} placement="right">
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -84,7 +84,10 @@ function ResponsiveAppBar(props) {
               {props.siteInfo.tabs.map((page, index) => (
                 <MenuItem
                   key={index}
-                  onClick={handleCloseNavMenu}
+                  onClick={() => {
+                    setAnchorElNav(null);
+                    window.location = page.tabEndpoint;
+                  }}
                   href={page.tabEndpoint}
                 >
                   <Typography textAlign="center">{page.tabName}</Typography>
@@ -114,16 +117,18 @@ function ResponsiveAppBar(props) {
           </Tooltip>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {props.siteInfo.tabs.map((page, index) => (
-              <Tooltip title={page.tabEndpoint} key={index}>
-                <Button
-                  href={page.tabEndpoint}
-                  key={page.tabEndpoint}
-                  onClick={handleCloseNavMenu}
-                  color="inherit"
-                >
-                  {page.tabName}
-                </Button>
-              </Tooltip>
+              <Button
+                size="small"
+                sx={{
+                  textTransform: "none",
+                }}
+                href={page.tabEndpoint}
+                key={page.tabEndpoint}
+                onClick={handleCloseNavMenu}
+                color="inherit"
+              >
+                {page.tabName}
+              </Button>
             ))}
           </Box>
 

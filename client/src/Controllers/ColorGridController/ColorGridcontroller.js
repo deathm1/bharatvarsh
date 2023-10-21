@@ -1,12 +1,7 @@
 import { Grid, Stack, Typography } from "@mui/material";
 import ReactColorfulCard from "../../Components/ReactColorfulCard/ReactColorfulCard";
-import { useEffect } from "react";
 
 export default function ColorGridController(props) {
-  useEffect(() => {
-    console.log(props.homeCardContent);
-  }, [props.homeCardContent]);
-
   if (props.homeCardContent !== null) {
     return (
       <Stack
