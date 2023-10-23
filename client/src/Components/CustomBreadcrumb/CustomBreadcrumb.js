@@ -1,7 +1,6 @@
 import * as React from "react";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
 
 export default function CustomBreadcrumb() {
   const [myBreadcrumbs, setMyBreadcrumbs] = React.useState([]);
@@ -48,14 +47,6 @@ export default function CustomBreadcrumb() {
             <Typography key={index} color="text.primary">
               {element}
             </Typography>
-            // <Link
-            //   underline="hover"
-            //   key={index}
-            //   color="inherit"
-            //   href={`${element === "Home" ? "/" : `/${element}`}`}
-            // >
-            //   {element}
-            // </Link>
           );
         }
       })}

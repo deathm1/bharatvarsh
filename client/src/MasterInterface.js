@@ -15,21 +15,12 @@ import ChapterVerseController from "./Pages/ChapterVerseController/ChapterVerseC
 import StickyFooter from "./Components/StickyFooter/StickyFooter";
 import CustomBreadcrumb from "./Components/CustomBreadcrumb/CustomBreadcrumb";
 import FontController from "./Controllers/FontController/FontController";
-
 function MasterInterface() {
   const [siteInfo, setSiteInfo] = useState({
     siteName: "Bharat Archive",
     tabs: [
       {
         tabName: "Books",
-        tabEndpoint: "/books",
-      },
-      {
-        tabName: "Books2",
-        tabEndpoint: "/books",
-      },
-      {
-        tabName: "Books3",
         tabEndpoint: "/books",
       },
     ],
