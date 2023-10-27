@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class BharatarchiveConfig(AppConfig):
+class BharatarchiveApiConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "bharatarchive"
+    name = "bharatarchive_api"

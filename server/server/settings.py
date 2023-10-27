@@ -13,18 +13,17 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import configparser
 
-my_config = configparser.ConfigParser()
-my_config.read("config.ini")
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+config = configparser.ConfigParser()
+config.read("config.ini")
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-*-zth4s#^hai77h(b3b)o@b__hd$jr698n3+j#a1h+!uzqjwl5"
+SECRET_KEY = "django-insecure-s=_s*71clgenruq4abv5nsf-v==e@5-1o^3*1$waa4=nx8h2#y"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -41,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "bharatarchive_api",
 ]
 
 MIDDLEWARE = [
@@ -79,12 +79,12 @@ WSGI_APPLICATION = "server.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": my_config.get("DATABASE", "ENGINE"),
-        "NAME": my_config.get("DATABASE", "NAME"),
-        "USER": my_config.get("DATABASE", "USERNAME"),
-        "PASSWORD": my_config.get("DATABASE", "PASSWORD"),
-        "HOST": my_config.get("DATABASE", "SERVER"),
-        "PORT": "3306",
+        "ENGINE": config.get("DATABASE", "ENGINE"),
+        "NAME": config.get("DATABASE", "NAME"),
+        "USER": config.get("DATABASE", "USERNAME"),
+        "PASSWORD": config.get("DATABASE", "PASSWORD"),
+        "HOST": config.get("DATABASE", "SERVER"),
+        "PORT": config.get("DATABASE", "PORT"),
     }
 }
 
