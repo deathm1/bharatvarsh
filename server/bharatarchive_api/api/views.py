@@ -83,17 +83,14 @@ def get_all_or_specific_books(request):
 
 # class get_all_or_specific_books(ListAPIView):
 #     serializer_class = books_serializer
-
 #     class Meta:
 #         ordering = ["id"]
-
 #     def get_queryset(self):
 #         current_language = self.request.GET.get("current_language")
 #         if current_language != None:
 #             get_language_id = language.objects.filter(
 #                 language_code_alpha2=current_language
 #             )
-
 #             if len(get_language_id) != 0:
 #                 return books.objects.filter(
 #                     language_id=int(get_language_id[0].id), is_active=True
