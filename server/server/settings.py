@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "bharatarchive_api",
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
